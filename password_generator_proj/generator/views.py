@@ -10,9 +10,13 @@ def eggs(request):
     return HttpResponse('hello eggs')
 
 def password(request):
-    length = 8
+    length = int(request.GET.get('length', 5))
     characters = list('abcdefghijklmnopqrstuvwxyz')
     thepassword = ''
+    if request.GET.get('uppercase'):
+        characters.extend('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+    if request.GET.get('special'):
+        characters.extend('!@#$%^&*()_+=-№;:?{}[]|<>,./~')
 
     for x in range(length):
         thepassword += random.choice(characters)
