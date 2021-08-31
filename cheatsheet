@@ -26,3 +26,4 @@ Change Any User's Password
 Collecting Static Files Into One Folder
 > python3 manage.py collectstatic
     
+python manage.py createsuperuser
