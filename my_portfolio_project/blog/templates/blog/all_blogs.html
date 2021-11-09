@@ -1,0 +1,30 @@
+{% extends 'portfolio/base.html' %}
+
+    {% block content %}
+
+    Buenos dias pedrillas
+    <h1>Blog entry</h1>
+    Blog posts
+    <h4>
+        {{ posts.count }} post{{ posts.count|pluralize }} was written
+    </h4>
+
+    {% for post in posts %}
+
+    <a href="{% url 'blog:detail' post.id %}">
+        <h2>
+            {{ post.title }}
+        </h2>
+    </a>
+    <p>
+        {{ post.creation_datetime|date:"G:i d M Y" }}
+        updated at
+        {{ post.update_datetime|date:"G:i d M Y" }}
+    </p>
+    <pre>
+        {{ post.text|safe|linebreaksbr|truncatechars:150 }}
+    </pre>
+
+    {% endfor %}
+
+{% endblock %}
